@@ -20,6 +20,7 @@ module.exports = {
     new WebpackBundleAnalyzer.BundleAnalyzerPlugin({analyzerMode: "static"}),
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
+      "process.env.baseUrl": JSON.stringify("https://dev-rating-manager-staging.herokuapp.com")
     }),
     new HtmlWebpackPlugin({
       template: "src/public/index.html",

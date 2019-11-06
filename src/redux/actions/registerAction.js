@@ -1,5 +1,5 @@
 import types from "./actionTypes";
-
+const baseUrl = process.env.baseUrl
 export function loadUsersSuccess ({email, password}){
     return { 
         type: types.SIGN_IN,
@@ -8,7 +8,7 @@ export function loadUsersSuccess ({email, password}){
 }
 export function signUp (payload) {
         return (dispatch) => {
-            return fetch("http://localhost:5001/api/v1/auth/signup", { //
+            return fetch(`${baseUrl}/api/v1/auth/signup`, { //
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',

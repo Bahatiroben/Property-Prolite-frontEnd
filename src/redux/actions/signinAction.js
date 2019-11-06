@@ -1,5 +1,5 @@
 import types from "./actionTypes";
-
+const baseUrl = process.env.baseUrl
 export function signinSuccess ({email, password}){
     return { 
         type: types.GET_PROPERTIES,
@@ -8,7 +8,7 @@ export function signinSuccess ({email, password}){
 }
 export function signin (payload) {
         return (dispatch) => {
-            return fetch("http://localhost:5001/api/v1/auth/signin", { //
+            return fetch(`${baseUrl}/api/v1/auth/signin`, { //
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
