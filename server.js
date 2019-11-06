@@ -6,8 +6,9 @@ dotenv.config();
 const app = express();
 const publicPath = path.join(__dirname, 'build');
 app.use(express.static(publicPath));
+const index = path.join(publicPath, 'index.html')
 app.get('*', (req, res) => {
-    res.sendFile(__dirname, 'build', 'index.html');
+    res.sendFile(index);
     console.log(path.join('>>>>', __dirname))
  });
  const PORT = process.env.PORT || 3001
