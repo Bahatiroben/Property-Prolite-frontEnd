@@ -226,3 +226,34 @@ input, select, textarea {
     margin: 2px;
     display: inline
 }
+
+.create-container{
+    width: 80%;
+    margin: auto;
+    *{
+        margin-bottom: 30px
+    }
+}
+input{
+    outline-style: none;
+}
+.create-title{
+    width: 50%;
+    margin: 50px auto;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+@media only screen and (max-width: 800px){
+    .create-container{
+        width: 100%;
+        *{
+            margin-bottom: 15px
+        }
+    }
+    .create-title{
+        width: 80%;
+        margin: 30px auto;
+        font-size: 20px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    }

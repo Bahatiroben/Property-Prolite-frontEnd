@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect} from 'react-redux';
 import { NavLink } from 'react-router-dom'
 import {signin} from '../redux/actions/signinAction';
+import { toast } from 'react-toastify';
 
 class LoginPage extends Component {
     constructor(props) {
@@ -17,7 +18,16 @@ class LoginPage extends Component {
     }
      handleClick = ({target})=>{
          const {signin} = this.props;
-        signin(this.state);
+         if(this.state.email && this.state.password) {
+        signin(this.state).then((data)=>{
+            if(!data) {
+                this.props.history.push("/properties")
+            }
+        });
+        } else {
+            toast.info("all fields are required")
+        }
+        
     } 
      handleChange = ({target})=>{
         this.setState((prev)=> ({...prev, [target.name]: target.value}))
@@ -39,7 +49,7 @@ class LoginPage extends Component {
                     <a href="./reset.html">Forgot Password?</a>
                 </div>
                 <br/>
-                 <NavLink to="/properties" onClick={this.handleClick} className="button primary full-width">Log In</NavLink>
+                 <a onClick={this.handleClick} className="button primary full-width">Log In</a>
                  
                 <hr/>
             </div>

@@ -8,11 +8,14 @@ import {loadNav} from '../../redux/actions/navActions'
 
 class PropertiesPage extends Component {
     componentDidMount(){
-        const {loadProperties, properties, loadNav} = this.props;
-        properties.length === 0?loadProperties().catch(err=>{
-            localStorage.setItem('ProliteToken', '');
+        const {loadProperties, loadNav} = this.props;
+        if(localStorage.getItem('PropliteToken' == '')) {
             this.props.history.push('/login')
-        }):console.log(this.props)
+        }
+        loadProperties().catch((err)=>{
+            localStorage.removeItem('ProliteToken', '');
+            this.props.history.push('/login')
+        })
         loadNav([{to: '/properties', caption: 'Properties'}, {to: '/logout', caption: 'Sign Out'}])
     }
     render() { 
@@ -30,7 +33,8 @@ class PropertiesPage extends Component {
 }
 PropertiesPage.propTypes = {
     properties: PropTypes.array.isRequired,
-    loadProperties: PropTypes.func.isRequired
+    loadProperties: PropTypes.func.isRequired,
+    loadNav: PropTypes.func.isRequired
 }
 const mapStateToProps = (state) => {
     return {

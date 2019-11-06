@@ -1,4 +1,7 @@
+/* eslint-disable no-unreachable */
+import { toast } from 'react-toastify';
 import types from "./actionTypes";
+toast.configure()
 const baseUrl = process.env.baseUrl
 export function signinSuccess ({email, password}){
     return { 
@@ -28,14 +31,16 @@ export function signin (payload) {
                         localStorage.setItem('ProliteToken', user.data.token);
                         dispatch(signinSuccess(payload));
                         break;
-                    case 404: 
-                        dispatch({type: types.USER_NOT_FOUND});
+                    case 404:
+                        toast.info("User not found") 
+                        return {status: 404};
                         break;
                     case 401:
-                        dispatch({type: types.INCORRECT_CREDENTIALS});
+                        toast.info("Email or password is incorrect")
+                        return {status: 401};
                         break;
                     default:
-                        dispatch({type: types.SERVER_ERROR});
+                        return {status: 500};
                         console.log('signin error >>>>', user);
                         break;
 
