@@ -6,4 +6,5 @@ export default {
     USER_NOT_FOUND: 'USER_NOT_FOUND',
     SERVER_ERROR: 'SERVER_ERROR', 
     LOAD_NAV: 'LOAD_NAV',
+    ADD_PROPERTY: 'ADD_PROPERTY',
 }

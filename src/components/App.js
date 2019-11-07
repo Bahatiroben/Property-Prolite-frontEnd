@@ -8,10 +8,16 @@ import PropertiesPage from './Properties/PropertyComponent';
 import LoginPage from './Login';
 import RegisterPage from './register';
 import SignOut from './common/signOut';
+import AddProperty from './Properties/AddProperty'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure()
 
 const App = () => {
     return(
         <div>
+            <ToastContainer/>
             <Header/>
             <Switch>
             <Route exact path="/" component={HomePage}/>
@@ -20,6 +26,7 @@ const App = () => {
             <Route path="/login" component={LoginPage}/>
             <Route path="/signup" component={RegisterPage}/>
             <Route path="/logout" component={SignOut}/>
+            <Route path="/add" component={AddProperty}/>
             <Route component={NotFound}/>
             </Switch>
         </div>
